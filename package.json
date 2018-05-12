@@ -1,0 +1,31 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "chat app",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irbekrm/Chat.git"
+  },
+  "keywords": [
+    "node",
+    "websockets"
+  ],
+  "author": "irbe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irbekrm/Chat/issues"
+  },
+  "homepage": "https://github.com/irbekrm/Chat#readme",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.1.0"
+  }
+}
