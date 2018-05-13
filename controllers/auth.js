@@ -16,7 +16,7 @@ exports.signup = (req, res) => {
 }
 
 exports.login = (req, res) => {
-  User.findOne({ email: req.body.email }, (err, user) => {
+  User.findOne({ username: req.body.username }, (err, user) => {
     if(err) return res.status(500).send('Error on the server.');
     if(!user) return res.status(404).send('No user found.');
   
@@ -25,6 +25,6 @@ exports.login = (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.SECRET, { expiresIn: 86400 });
 
-    res.status(200).send({ auth: true, token: token });
+    res.status(200).send({ auth: true, token: token, name: user.username });
   });
 }

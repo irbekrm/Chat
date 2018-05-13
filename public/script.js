@@ -8,9 +8,17 @@ window.onload = _ => {
 const listen = _ => {
   let signup = document.getElementById('signup');
   let logout = document.getElementById('logout');
+  let login = document.getElementById('login');
   signup && signup.addEventListener('click', onSignup);
   logout && logout.addEventListener('click', onLogout);
+  login && login.addEventListener('click', onLogin);
 }
+
+async function onLogin(e) {
+  await submitUserDetails('auth/login').then(result => processResult(result)).catch(err => console.log(err));
+  redirect(HOME);
+  e.preventDefault();
+};
 
 const onLogout = _ => {
   window.sessionStorage.clear();
