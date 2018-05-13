@@ -5,6 +5,10 @@ const app = require('./app'),
 
 io.on('connection', socket => {
   console.log('A new connection was created');
+  
+  socket.on('message', message => console.log('A message was received ', message));
+
+  socket.on('disconnect', _ => console.log('disconnecting'));
 });
 
 http.listen(port, _ => console.log(`Listening on port ${port}`));
