@@ -11,12 +11,15 @@ const setGreeting = _ => {
   }
 }
 
+const name = _ => window.sessionStorage.name;
+
 window.onload = _ => {
   let disc = document.getElementById('disc');
   let send = document.getElementById('send');
   send && send.addEventListener('click', sendMessage);
   disc && disc.addEventListener('click', onDisc);
   setGreeting();
+  socket.emit('join', {name: name()});
 }
 
 const sendMessage = e => {
@@ -37,4 +40,10 @@ socket.on('post',post => {
   ele.appendChild(text);
   let thread = document.getElementById('thread');
   thread.appendChild(ele);
+});
+
+socket.on('users', data => {
+  let usersDiv = document.getElementById('users');
+  data.users.forEach(user => {
+    if (!(usersDiv.innerHTML.includes(user))) usersDiv.innerHTML += `<p>${user}</p>`});
 });
