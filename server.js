@@ -6,7 +6,9 @@ const app = require('./app'),
 io.on('connection', socket => {
   console.log('A new connection was created');
   
-  socket.on('message', message => console.log('A message was received ', message));
+  socket.on('message', message => {console.log('A message was received ', message);
+    io.emit('post', { text: message });
+  });
 
   socket.on('disconnect', _ => console.log('disconnecting'));
 });
