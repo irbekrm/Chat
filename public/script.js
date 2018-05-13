@@ -6,8 +6,15 @@ window.onload = _ => {
 }
 
 const listen = _ => {
-  signup = document.getElementById('signup');
+  let signup = document.getElementById('signup');
+  let logout = document.getElementById('logout');
   signup && signup.addEventListener('click', onSignup);
+  logout && logout.addEventListener('click', onLogout);
+}
+
+const onLogout = _ => {
+  window.sessionStorage.clear();
+  redirect(HOME);
 }
 
 const setGreeting = _ => {
