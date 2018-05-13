@@ -6,12 +6,24 @@ window.onload = _ => {
 }
 
 const listen = _ => {
+  let main = document.getElementById('main');
   let signup = document.getElementById('signup');
   let logout = document.getElementById('logout');
   let login = document.getElementById('login');
+  main && main.addEventListener('click', onEnterMain);
   signup && signup.addEventListener('click', onSignup);
   logout && logout.addEventListener('click', onLogout);
   login && login.addEventListener('click', onLogin);
+}
+
+
+async function onEnterMain(e) {
+  const url = `${HOME}chats/main`;
+  const headers = { 'x-access-token': token() }
+  const json = await sendRequest('GET', url, '', headers).then(res => JSON.parse(res)).catch(err => console.log('ERROR is ', err));
+  const location = json.location;
+  location && redirect(`${HOME}${location}`);
+  e.preventDefault();
 }
 
 async function onLogin(e) {
@@ -69,3 +81,5 @@ const processResult = result => {
 };
 
 const redirect = address => window.location.href = address;
+
+const token = _ => window.sessionStorage.token;

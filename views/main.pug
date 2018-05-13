@@ -1,0 +1,9 @@
+extends layout.pug
+
+block script
+  script
+    include ../public/bundle.js
+
+block content
+  input#message(type='text') 
+  button#send(type='submit') Send

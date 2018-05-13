@@ -24,10 +24,13 @@
   "dependencies": {
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.2",
+    "browserify": "^16.2.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "http": "0.0.0",
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.1.0",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "socket.io": "^2.1.0"
   }
 }
