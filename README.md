@@ -13,11 +13,11 @@ Clone the repo https://github.com/irbekrm/Chat.git
 
 2. A user can enter a chatroom and:
 
-  2.1 post a message
+2.1 post a message
   
-  2.2 see dynamically updated list of users in chatroom
+2.2 see dynamically updated list of users in chatroom
  
-  2.3 see all messages posted in real time
+2.3 see all messages posted in real time
   
 ### Learning Objectives
 1. Understand the basics of websockets
