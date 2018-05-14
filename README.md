@@ -1,10 +1,29 @@
-### Learning Objectives
-1. Learn more about different connection models/ patterns
-2. Understand the basics of websockets
+### Description
+Realtime chat app. Users can sign up, join a chat room, see who else is there and post and view messages in real time.
+
+### Use
+Clone the repo https://github.com/irbekrm/Chat.git
+
+*npm install* (install dependencies)
+
+*npm start* (start the server)
 
 ### User stories
-1. As a user I can browse a number of open chats
-2. As a user I can join any open chats and post messages
-3. As a user I can receive published messages from chats I've subscribed to in real time
-4. As a user I can see what other users are in the chat
-5. As a user I can see when other users join/ leave a chat
+1. A user can sign up / log to the app
+2. A user can enter a chatroom and:
+3. post a message
+4. see dynamically updated list of users in chatroom
+5. see all messages posted in real time
+  
+### Learning Objectives
+1. Understand the basics of websockets
+2. Learn more about different connection models/patterns
+
+### Technologies
+Express, MongoDB for backend, plain JavaScript for frontend, Socket.io for the chat itself.
+
+##### Server- client connection
+A mix of standard AJAX calls/ HTTP requests and Websockets connections. Messages related to user signup/login are sent using AJAX. Once a user enters a chat room a new socket connection is opened. State of a chat room- messages posted, users currently online - is then updated using the socket connection. When a user leaves a room, the connection is closed.
+
+##### Users
+User data is stored in a MongoDB database. Passwords are encrypted using bcrypt. JSON Web Tokens are used for user authorisation. When a user signs up/logs in they are issued a token that will be verified when they attempt to access a chat room.
