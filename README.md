@@ -2,7 +2,7 @@
 Realtime chat app. Users can sign up, join a chat room, see who else is there and post and view messages in real time.
 
 ### Use
-Clone the repo 
+Clone the repo https://github.com/irbekrm/Chat.git
 
 *npm install* (install dependencies)
 
