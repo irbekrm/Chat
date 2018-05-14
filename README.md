@@ -3,7 +3,9 @@ Realtime chat app. Users can sign up, join a chat room, see who else is there an
 
 ### Use
 Clone the repo 
+
 *npm install* (install dependencies)
+
 *npm start* (start the server)
 
 ### User stories
