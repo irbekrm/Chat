@@ -7,7 +7,7 @@ const users = [];
 
 io.on('connection', socket => {
   
-  socket.on('message', message => io.emit('post', message));
+  socket.on('message', data => io.emit('post', data));
 
   socket.on('willDisconnect', name => { 
     io.emit('disconnected', name);

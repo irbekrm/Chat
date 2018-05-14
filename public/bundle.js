@@ -6295,7 +6295,7 @@ window.onload = _ => {
 
 const sendMessage = e => {
   const message = document.getElementById('message').value;
-  socket.emit('message', message);
+  socket.emit('message', { name: name(), post: message});
   e.preventDefault();
 }
 
@@ -6311,9 +6311,9 @@ socket.on('disconnected', name => {
   ele.innerHTML = ele.innerHTML.replace(re, '');
 });
 
-socket.on('post', post => {
+socket.on('post', data => {
   let ele = document.createElement('p');
-  let text = document.createTextNode(post);
+  let text = document.createTextNode(`${data.name}: ${data.post}`);
   ele.appendChild(text);
   let thread = document.getElementById('thread');
   thread.appendChild(ele);
