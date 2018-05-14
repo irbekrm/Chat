@@ -6,17 +6,17 @@ const app = require('./app'),
 const users = [];
 
 io.on('connection', socket => {
-  console.log('A new connection was created');
   
-  socket.on('message', message => {console.log('A message was received ', message);
-    io.emit('post', { text: message });
+  socket.on('message', message => io.emit('post', message));
+
+  socket.on('willDisconnect', name => { 
+    io.emit('disconnected', name);
+    socket.disconnect();
   });
 
-  socket.on('disconnect', _ => console.log('disconnecting'));
-
-  socket.on('join', data => {console.log(`${data.name} joined`);
-    users.push(data.name);
-    io.emit('users', { users: users });
+  socket.on('join', name => {
+    users.push(name);
+    io.emit('users', users);
   });
 });
 

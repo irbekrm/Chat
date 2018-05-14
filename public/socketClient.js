@@ -19,7 +19,7 @@ window.onload = _ => {
   send && send.addEventListener('click', sendMessage);
   disc && disc.addEventListener('click', onDisc);
   setGreeting();
-  socket.emit('join', {name: name()});
+  socket.emit('join', name());
 }
 
 const sendMessage = e => {
@@ -29,21 +29,27 @@ const sendMessage = e => {
 }
 
 const onDisc = e => {
-  socket.disconnect(true);
+  socket.emit('willDisconnect', name());
   e.preventDefault();
   window.location.href = HOME;
 }
 
-socket.on('post',post => {
+socket.on('disconnected', name => {
+  let re = new RegExp(`<p>${name}</p>`);
+  let ele = document.getElementById('users');
+  ele.innerHTML = ele.innerHTML.replace(re, '');
+});
+
+socket.on('post', post => {
   let ele = document.createElement('p');
-  let text = document.createTextNode(post.text);
+  let text = document.createTextNode(post);
   ele.appendChild(text);
   let thread = document.getElementById('thread');
   thread.appendChild(ele);
 });
 
-socket.on('users', data => {
+socket.on('users', users => {
   let usersDiv = document.getElementById('users');
-  data.users.forEach(user => {
+  users.forEach(user => {
     if (!(usersDiv.innerHTML.includes(user))) usersDiv.innerHTML += `<p>${user}</p>`});
 });
