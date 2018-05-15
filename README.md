@@ -26,6 +26,7 @@ Clone the repo https://github.com/irbekrm/Chat.git
 
 ### Technologies
 Express, MongoDB for backend, plain JavaScript for frontend, Socket.io for the chat itself.
+Nightwatch testing framework with Mocha and Chai (tests are being implemented still).
 
 ##### Server- client connection
 A mix of standard AJAX calls/ HTTP requests and Websockets connections. Messages related to user signup/login are sent using AJAX. Once a user enters a chat room a new socket connection is opened. State of a chat room- messages posted, users currently online - is then updated using the socket connection. When a user leaves a room, the connection is closed.
