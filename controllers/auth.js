@@ -18,10 +18,10 @@ exports.signup = (req, res) => {
 exports.login = (req, res) => {
   User.findOne({ username: req.body.username }, (err, user) => {
     if(err) return res.status(500).send('Error on the server.');
-    if(!user) return res.status(404).send('No user found.');
+    if(!user) return res.status(404).send({ token: null, auth: false, message: 'No user found.' });
   
     const isPasswordValid = bcrypt.compareSync(req.body.password, user.password);
-    if(!isPasswordValid) return res.status(401).send({ auth: false, token: null });
+    if(!isPasswordValid) return res.status(401).send({ message: 'invalid Password', auth: false, token: null });
 
     const token = jwt.sign({ id: user._id }, process.env.SECRET, { expiresIn: 86400 });
 
