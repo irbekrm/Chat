@@ -1,3 +1,6 @@
+Chat
+=====
+
 [![Build Status](https://travis-ci.org/irbekrm/Chat.svg?branch=master)](https://travis-ci.org/irbekrm/Chat)
 
 ### Description
