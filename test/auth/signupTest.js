@@ -1,9 +1,9 @@
 const mongoose = require('mongoose'),
-      auth = require('../routes/auth.js'),
-      User = require('../models/user'),
+      auth = require('../../routes/auth'),
+      User = require('../../models/user'),
       chai = require('chai'),
       chaiHttp = require('chai-http'),
-      server = require('../server'),
+      server = require('../../server'),
       should = chai.should();
 
 chai.use(chaiHttp);
@@ -22,7 +22,6 @@ describe('signup', _ => {
     .post('/auth/signup')
     .send(user)
     .end((err, res) => {
-      if(err) console.log('ERROR FROM 1: ', err);
       res.should.have.status(201);
       res.body.should.be.a('object');
       res.body.should.have.property('auth').eql(true);
@@ -42,7 +41,6 @@ describe('signup', _ => {
       .post('/auth/signup')
       .send(user1)
       .end((err, res) => {
-        if(err) console.log(err);
         res.should.have.status(500);
         res.body.should.be.a('object');
         res.body.should.have.property('auth').eql(false);
@@ -51,4 +49,15 @@ describe('signup', _ => {
       })
     })
   });
+
+describe('rendering signup form', _ => {
+  it('should render a signup form', done => {
+    chai.request(server)
+    .get('/auth/signup')
+    .end((err, res) => {
+      res.should.have.status(200);
+    done();
+    });
+  });
+});
 });
