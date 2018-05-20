@@ -65,7 +65,7 @@ const sendRequest = (method, url, params='', headers={}) => {
     xhr.open(method, url, true);
     xhr.onreadystatechange = _ => {
       if(xhr.readyState == 4) {
-        xhr.status == 200 ? res(xhr.responseText) : rej(xhr.statusText);
+        ~~(xhr.status/100) == 2 ? res(xhr.responseText) : rej(xhr.statusText);
       }
     };
     for(let head in headers) { xhr.setRequestHeader(head, headers[head]) };

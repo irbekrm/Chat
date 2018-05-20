@@ -5,7 +5,7 @@ const mongoose = require('mongoose'),
       chaiHttp = require('chai-http'),
       server = require('../../server'),
       should = chai.should(),
-      bcrypt = require('bcrypt');
+      bcrypt = require('bcrypt-nodejs');
 
 chai.use(chaiHttp);
 
@@ -29,7 +29,7 @@ describe('login', _ => {
 
   describe('existing user logs in with correct password', _=>{
     it('should allow login', done => {
-      const hashedPassword = bcrypt.hashSync('Pass123', 8);
+      const hashedPassword = bcrypt.hashSync('Pass123');
       const newUser = { username: 'milleV', password: hashedPassword };
       User.create(newUser);
       const user = { username: 'milleV', password: 'Pass123'};
@@ -64,7 +64,7 @@ describe('login', _ => {
   
   describe('invalid password', _ => {
     it('should respond with a status 401', done => {
-      const hashedPassword = bcrypt.hashSync('Pass123', 8);
+      const hashedPassword = bcrypt.hashSync('Pass123');
       const user = { username: 'milleV', password: hashedPassword };
       User.create(user);
       const userFake = { username: 'milleV', password: 'pass123' };
@@ -74,7 +74,7 @@ describe('login', _ => {
       .end((err, res) => {
         res.should.have.status(401);
         res.body.should.have.a.property('auth').eql(false);
-        res.body.should.have.a.property('message').eql('invalid Password');
+        res.body.should.have.a.property('message').eql('invalid password');
       done();
       });
     });

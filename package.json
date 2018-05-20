@@ -4,7 +4,6 @@
   "description": "chat app",
   "main": "app.js",
   "scripts": {
-    "prestart": "mongod",
     "start": "node server.js",
     "test": "NODE_ENV=test mocha --recursive --exit"
   },
@@ -23,17 +22,19 @@
   },
   "homepage": "https://github.com/irbekrm/Chat#readme",
   "dependencies": {
-    "bcrypt": "^2.0.1",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "browserify": "^16.2.2",
     "config": "^1.30.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "http": "0.0.0",
+    "install": "^0.11.0",
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.1.0",
     "node": "^10.1.0",
     "node-pre-gyp": "^0.10.0",
+    "npm": "^6.0.1",
     "pug": "^2.0.3",
     "socket.io": "^2.1.0"
   },
