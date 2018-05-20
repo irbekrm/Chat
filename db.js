@@ -1,3 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+      config = require('config');
 
-mongoose.connect('mongodb://localhost:27017/chat');
+mongoose.connect(config.DBHost);

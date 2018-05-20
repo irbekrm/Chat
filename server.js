@@ -7,7 +7,7 @@ const users = [];
 
 io.on('connection', socket => {
   
-  socket.on('message', data => io.emit('post', data));
+  socket.on('message', data => io.emit('post', data))
 
   socket.on('willDisconnect', name => { 
     io.emit('disconnected', name);
@@ -21,3 +21,4 @@ io.on('connection', socket => {
 });
 
 http.listen(port, _ => console.log(`Listening on port ${port}`));
+module.exports = http;
