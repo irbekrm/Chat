@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/irbekrm/Chat.svg?branch=master)](https://travis-ci.org/irbekrm/Chat)
+
 ### Description
 Realtime chat app. Users can sign up, join a chat room, see who else is there and post and view messages in real time.
 
